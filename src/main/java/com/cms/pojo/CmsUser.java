@@ -12,7 +12,7 @@ import java.util.Date;
 public class CmsUser {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     @Column(name="user_name")
     private String  userName ;
