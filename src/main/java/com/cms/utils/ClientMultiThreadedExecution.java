@@ -51,8 +51,8 @@ import java.net.URISyntaxException;
  */
 public class ClientMultiThreadedExecution {
     static String hitUrl ="http://t.hd.xiaomi.com/s/";
-    static String URL = "http://tc.hd.xiaomi.com/hdget?product=tv&fk=1297&_=13926954272531392696030691";
-    static String cookie ="mstuid=1392091386877_2265; xmuuid=XMGUEST-699CF100-92D1-11E3-A72C-599A5C075AAE; lastsource=miwifi.com; userId=10127790; xm_user_www_num=0; XM_10127790_UN=%E5%90%B4%E5%BF%97%E6%98%8E; __utma=219621008.1740760687.1392091387.1392257587.1392694585.3; __utmb=219621008.4.9.1392694600780; __utmc=219621008; __utmz=219621008.1392257587.2.2.utmcsr=miwifi.com|utmccn=(referral)|utmcmd=referral|utmcct=/; mstz=CN-WW-HP-AD-A0|http://p.www.xiaomi.com/open/index.html|1788589092.3|0";
+    static String URL = "http://tc.hd.xiaomi.com/hdget?product=tv&fk=5598&_=13939052733871393905665577";
+    static String cookie ="xmuuid=XMGUEST-724F2810-6C5F-11E3-B72F-9383126FE10B; mstuid=1387864294833_7782; XM_151770420_UN=%E5%A4%AA%E9%98%B3%E6%8A%B1%E6%9C%88%E4%BA%AE; __utma=219621008.955256503.1387864295.1393831839.1393897543.45; __utmc=219621008; __utmz=219621008.1390881504.25.2.utmcsr=static.xiaomi.cn|utmccn=(referral)|utmcmd=referral|utmcct=/2014tv/index.html; userId=151770420; passport_slh=Gm1KI6QIFvSL253/779N7cRYFGQ=; uLocale=zh_CN; xm_user_www_num=0; lastsource=p.www.xiaomi.com; mstz=CN-WW-HP-NV-A9|http://www.xiaomi.com/mitv|1750614230.24|9; Hm_lvt_7080c6a6aba51276281d5d595b080def=1393897485,1393897498; Hm_lpvt_7080c6a6aba51276281d5d595b080def=1393905574";
 
 
     public static void main(String[] args) throws Exception {
