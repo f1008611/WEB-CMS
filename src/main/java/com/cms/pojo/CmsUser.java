@@ -9,22 +9,22 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name="cms_user")
+@Table(name = "cms_user")
 public class CmsUser implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name="user_name")
-    private String  userName ;
+    @Column(name = "user_name", length = 25)
+    private String userName;
     private String password;
-    @Column(name="create_time")
+    @Column(name = "create_time")
     private Date createTime;
-    @Column(name="update_time")
+    @Column(name = "update_time")
     private Date updateTime;
-    @Column(name="last_login_time")
+    @Column(name = "last_login_time")
     private Date lastLoginTime;
-    private String  status;
+    private String status;
     private String icon;
 
 
