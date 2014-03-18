@@ -1,6 +1,7 @@
 package com.cms.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="cms_user")
-public class CmsUser {
+public class CmsUser implements Serializable {
 
     @Id
     @GeneratedValue
@@ -24,6 +25,7 @@ public class CmsUser {
     @Column(name="last_login_time")
     private Date lastLoginTime;
     private String  status;
+    private String icon;
 
 
     public Long getId() {
@@ -80,5 +82,13 @@ public class CmsUser {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }
