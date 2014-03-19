@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "cms_user")
 public class CmsUser implements Serializable {
-
+    private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Long id;
