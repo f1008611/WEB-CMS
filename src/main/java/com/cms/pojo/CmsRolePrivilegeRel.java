@@ -7,13 +7,13 @@ import java.io.Serializable;
  * Created by Administrator on 14-3-19.
  */
 @Entity
-@Table(name="cms_role_privilege_rel")
+@Table(name = "cms_role_privilege_rel")
 public class CmsRolePrivilegeRel implements Serializable {
     private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name="role_id")
+    @Column(name = "role_id")
     private Long roleId;
     @Column(name = "privilege_id")
     private Long privilegeId;
