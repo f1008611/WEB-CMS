@@ -11,13 +11,25 @@
 
     <!-- 指定Maven仓库 -->
     <repositories>
-        <repository>
+      <!--  <repository>
             <id>maven</id>
             <name>Maven Repository Switchboard</name>
             <layout>default</layout>
             <url>http://repo1.maven.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
+            </snapshots>
+        </repository>-->
+
+        <repository>
+            <id>oschinaRepository</id>
+            <name>local private nexus</name>
+            <url>http://maven.oschina.net/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
@@ -27,6 +39,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- 指定maven plugin仓库 -->
+    <pluginRepositories>
+        <!-- oschina的maven plugin仓库 -->
+        <pluginRepository>
+            <id>oschinaPluginRepository</id>
+            <name>local private nexus</name>
+            <url>http://maven.oschina.net/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencies>
         <!-- jstl -->
@@ -114,8 +141,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11-beta-1</version>
-            <scope>test</scope>
+            <version>4.11</version>
+           <!-- <scope>test</scope>-->
         </dependency>
         <!-- hibernate4 -->
         <dependency>
@@ -179,6 +206,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
             <version>3.1.2.RELEASE</version>
         </dependency>
     </dependencies>
