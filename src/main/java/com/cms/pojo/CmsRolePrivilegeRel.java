@@ -18,7 +18,6 @@ public class CmsRolePrivilegeRel implements Serializable {
     @Column(name = "privilege_id")
     private Long privilegeId;
 
-
     public Long getId() {
         return id;
     }
