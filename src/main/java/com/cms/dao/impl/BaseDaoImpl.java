@@ -34,8 +34,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
-    public Serializable save(T o) {
-        return this.getCurrentSession().save(o);
+    public Serializable save(T t) {
+        return this.getCurrentSession().save(t);
     }
 
     @Override
@@ -64,13 +64,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
-    public void delete(T o) {
-        this.getCurrentSession().delete(o);
+    public void delete(T t) {
+        this.getCurrentSession().delete(t);
     }
 
     @Override
-    public void update(T o) {
-        this.getCurrentSession().update(o);
+    public void update(T t) {
+        this.getCurrentSession().update(t);
     }
 
     @Override
@@ -127,5 +127,9 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
             }
         }
         return (Long) q.uniqueResult();
+    }
+    @Override
+    public T getById(Class<T> c, Serializable id) {
+        return (T) getCurrentSession().get(c, id);
     }
 }

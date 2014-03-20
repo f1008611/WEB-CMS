@@ -2,8 +2,11 @@ package com.cms.action;
 
 import com.cms.pojo.CmsUser;
 import com.cms.service.CmsUserService;
+import com.cms.utils.IpUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -20,7 +23,7 @@ import org.springframework.stereotype.Controller;
 @Results({@Result(name="aa",location="/WEB-INF/admin/index.jsp")})
 @Controller
 public class CmsUserAction{
-
+    private Logger logger=Logger.getLogger(this.getClass());
 
     private String userName;
     private String password;
@@ -29,7 +32,9 @@ public class CmsUserAction{
 
     public String login(){
         System.out.println("userName="+userName+"======password="+password);
-        cmsUserService.login(userName,password);
+       // cmsUserService.login(userName,password);
+
+        logger.info("ip="+IpUtils.getIpAddr(ServletActionContext.getRequest()));
         return "aa";
     }
 

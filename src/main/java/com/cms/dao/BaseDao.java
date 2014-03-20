@@ -9,13 +9,13 @@ import java.util.Map;
  */
 public interface BaseDao<T> {
 
-    public Serializable save(T o);
+    public Serializable save(T t);
 
-    public void delete(T o);
+    public void delete(T t);
 
-    public void update(T o);
+    public void update(T t);
 
-    public void saveOrUpdate(T o);
+    public void saveOrUpdate(T t);
 
     public T get(String hql);
 
@@ -32,4 +32,6 @@ public interface BaseDao<T> {
     public Long count(String hql);
 
     public Long count(String hql, Map<String, Object> params);
+
+    public T getById(Class<T> c, Serializable id);
 }
