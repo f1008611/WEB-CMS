@@ -9,5 +9,6 @@ public interface CmsUserService {
 
 
     CmsUser login(String userName,String password);
+    CmsUser findByUserName(String userName);
 
 }

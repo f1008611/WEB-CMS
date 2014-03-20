@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
@@ -18,19 +19,19 @@ import java.util.Map;
 @Repository("baseDao")
 public class BaseDaoImpl<T> implements BaseDao<T> {
 
+    @Autowired
+    @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     private Session getCurrentSession() {
-        return this.sessionFactory.getCurrentSession();
+        Session session = null;
+        try {
+            session = this.sessionFactory.getCurrentSession();
+        } catch (Exception e) {
+            session = this.sessionFactory.openSession();
+        }
+        return session;
     }
 
     @Override
@@ -130,14 +131,10 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
 
-
-
     @Override
     public void test() {
 
     }
-
-
 
 
 }

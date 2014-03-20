@@ -14,15 +14,13 @@ import java.util.Map;
  */
 @Service("cmsUserService")
 public class CmsUserServiceImpl implements CmsUserService {
-    private BaseDao<CmsUser> cmsUserBaseDao;
-
-    public BaseDao<CmsUser> getCmsUserBaseDao() {
-        return cmsUserBaseDao;
-    }
-
     @Autowired
-    public void setCmsUserBaseDao(BaseDao<CmsUser> cmsUserBaseDao) {
-        this.cmsUserBaseDao = cmsUserBaseDao;
+    private BaseDao<CmsUser> cmsUserBaseDao;
+    @Override
+    public CmsUser findByUserName(String userName) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("userName", userName);
+        return  cmsUserBaseDao.get("from CmsUser t where t.userName = :userName", params);
     }
 
     @Override
