@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by Administrator on 14-2-27.
  */
 public interface BaseDao<T> {
-    void  test();
+
     public Serializable save(T o);
 
     public void delete(T o);
