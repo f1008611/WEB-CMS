@@ -20,7 +20,6 @@ import java.util.Map;
 public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Autowired
-    //@Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
 
