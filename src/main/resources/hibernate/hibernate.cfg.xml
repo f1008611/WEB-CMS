@@ -13,17 +13,17 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 
     <!-- 配置数据源 -->
     <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"  destroy-method="close">
-        <property name="driverClass" value="${jdbc.gmc.driver}" />
-        <property name="jdbcUrl" value="${jdbc.gmc.url}" />
-        <property name="user" value="${jdbc.gmc.username}" />
-        <property name="password" value="${jdbc.gmc.passwd}" />
+        <property name="driverClass" value="${jdbc.cms.driver}" />
+        <property name="jdbcUrl" value="${jdbc.cms.url}" />
+        <property name="user" value="${jdbc.cms.username}" />
+        <property name="password" value="${jdbc.cms.passwd}" />
         <property name="autoCommitOnClose" value="true"/>
-        <property name="checkoutTimeout" value="${jdbc.gmc.checkoutTimeout}"/>
-        <property name="minPoolSize" value="${jdbc.gmc.miniPoolSize}" />
-        <property name="maxPoolSize" value="${jdbc.gmc.maxPoolSize}"/>
-        <property name="initialPoolSize" value="${jdbc.gmc.initialPoolSize}"/>
-        <property name="maxIdleTime" value="${jdbc.gmc.maxIdleTime}"/>
-        <property name="acquireIncrement" value="${jdbc.gmc.acquireIncrement}"/>
+        <property name="checkoutTimeout" value="${jdbc.cms.checkoutTimeout}"/>
+        <property name="minPoolSize" value="${jdbc.cms.miniPoolSize}" />
+        <property name="maxPoolSize" value="${jdbc.cms.maxPoolSize}"/>
+        <property name="initialPoolSize" value="${jdbc.cms.initialPoolSize}"/>
+        <property name="maxIdleTime" value="${jdbc.cms.maxIdleTime}"/>
+        <property name="acquireIncrement" value="${jdbc.cms.acquireIncrement}"/>
     </bean>
 
     <!-- 配置hibernate session工厂 -->
@@ -32,7 +32,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <prop key="hibernate.dialect">${jdbc.gmc.dialect}</prop>
+                <prop key="hibernate.dialect">${jdbc.cms.dialect}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
             </props>
