@@ -18,7 +18,7 @@ import java.util.Map;
  * Created by Administrator on 14-3-1.
  */
 @Service("cmsUserService")
-public class CmsUserServiceImpl implements CmsUserService {
+public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsUserService {
     private Logger logger= Logger.getLogger(this.getClass());
     @Autowired
     private CmsUserDao cmsUserDao;

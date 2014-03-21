@@ -14,6 +14,8 @@ import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.Date;
+
 
 /**
  * Created by Administrator on 14-3-1.
@@ -25,15 +27,19 @@ import org.springframework.stereotype.Controller;
 public class CmsUserAction{
     private Logger logger=Logger.getLogger(this.getClass());
 
-    private String userName;
-    private String password;
+    private String userName="a";
+    private String password="b";
     @Autowired
     private CmsUserService cmsUserService;
 
     public String login(){
         System.out.println("userName="+userName+"======password="+password);
        // cmsUserService.login(userName,password);
-
+        CmsUser cmsUser=new CmsUser();
+        cmsUser.setUserName(userName);
+        cmsUser.setPassword(password);
+        cmsUser.setCreateTime(new Date());
+        cmsUserService.save(cmsUser);
         logger.info("ip="+IpUtils.getIpAddr(ServletActionContext.getRequest()));
         return "aa";
     }

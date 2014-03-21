@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Administrator on 14-3-1.
  */
-public interface CmsUserService {
+public interface CmsUserService extends BaseService<CmsUser>{
 
 
     //CmsUser login(String userName,String password);
