@@ -22,25 +22,20 @@ import java.util.Date;
  */
 @Namespace("/admin")
 @Action(value = "cmsUserAction")
-@Results({@Result(name="aa",location="/WEB-INF/admin/index.jsp")})
+@Results({@Result(name = "aa", location = "/WEB-INF/admin/index.jsp")})
 @Controller
-public class CmsUserAction{
-    private Logger logger=Logger.getLogger(this.getClass());
+public class CmsUserAction {
+    private Logger logger = Logger.getLogger(this.getClass());
 
-    private String userName="a";
-    private String password="b";
+    private String userName = "a";
+    private String password = "b";
     @Autowired
     private CmsUserService cmsUserService;
 
-    public String login(){
-        System.out.println("userName="+userName+"======password="+password);
-       // cmsUserService.login(userName,password);
-        CmsUser cmsUser=new CmsUser();
-        cmsUser.setUserName(userName);
-        cmsUser.setPassword(password);
-        cmsUser.setCreateTime(new Date());
-        cmsUserService.save(cmsUser);
-        logger.info("ip="+IpUtils.getIpAddr(ServletActionContext.getRequest()));
+    public String login() {
+        logger.info("userName=" + userName + "======password=" + password);
+        CmsUser cmsUser = cmsUserService.login(userName, password);
+        logger.info("ip=" + IpUtils.getIpAddr(ServletActionContext.getRequest()));
         return "aa";
     }
 
