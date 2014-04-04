@@ -36,9 +36,9 @@ public class TestIterator{
         set.add("eew");
         set.add("ggg");
 
-       /* for(int i=0;i<set.size();i++){
-            System.out.println(set.get());
-        }*/
+        for(int i=0;i<set.size();i++){
+            System.out.println(set.iterator().next());
+        }
 
 
     }
