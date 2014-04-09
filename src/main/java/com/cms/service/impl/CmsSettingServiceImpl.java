@@ -1,5 +1,6 @@
 package com.cms.service.impl;
 
+import com.cms.Constants.Constants;
 import com.cms.dao.CmsSettingDao;
 import com.cms.pojo.CmsSetting;
 import com.cms.service.CmsSettingService;
@@ -16,10 +17,10 @@ public class CmsSettingServiceImpl extends BaseServiceImpl<CmsSetting> implement
     private CmsSettingDao cmsSettingDao;
     @Override
     public void updateVersion() {
-       CmsSetting cmsSetting=cmsSettingDao.findByCode("update_time");
+       CmsSetting cmsSetting=cmsSettingDao.findByCode(Constants.versionCode);
         if(cmsSetting==null){
             cmsSetting=new CmsSetting();
-            cmsSetting.setCode("update_time");
+            cmsSetting.setCode(Constants.versionCode);
         }
         cmsSetting.setValue(String.valueOf(System.currentTimeMillis()));
         cmsSettingDao.update(cmsSetting);
