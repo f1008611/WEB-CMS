@@ -62,4 +62,9 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
     public List<CmsUser> findAllUser() {
         return cmsUserBaseDao.find("from CmsUser ");
     }*/
+
+    @Override
+    public void updateEntity() {
+
+    }
 }

@@ -14,4 +14,6 @@ public interface CmsUserService extends BaseService<CmsUser>{
     CmsUser findByUserName(String userName);
    // List<CmsUser> findAllUser();
 
+    void updateEntity();
+
 }
