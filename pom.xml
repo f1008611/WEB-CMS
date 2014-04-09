@@ -6,7 +6,7 @@
 
     <groupId>com.cms</groupId>
     <artifactId>ROOT</artifactId>
-    <version>1.0</version>
+   <!-- <version>1.0</version>-->
     <packaging>war</packaging>
 
     <!-- 指定Maven仓库 -->
