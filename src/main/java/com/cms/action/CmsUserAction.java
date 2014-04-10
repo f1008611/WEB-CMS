@@ -28,6 +28,7 @@ import java.util.Date;
 public class CmsUserAction {
     private Logger logger = Logger.getLogger(this.getClass());
 
+
     private String loginName;
     private String password;
     @Autowired
@@ -45,12 +46,11 @@ public class CmsUserAction {
         return "success";
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
