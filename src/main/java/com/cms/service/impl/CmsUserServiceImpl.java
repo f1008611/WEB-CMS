@@ -9,6 +9,8 @@ import com.cms.pojo.CmsRole;
 import com.cms.pojo.CmsUser;
 import com.cms.service.CmsUserService;
 import com.cms.utils.IpUtils;
+import com.sun.org.omg.SendingContext._CodeBaseImplBase;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +39,16 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
     }
 
     @Override
-    public CmsUser login(String userName, String password) {
+    public CmsUser login(String loginName, String password) {
         logger.info("come in CmsUserServiceImpl -------> login");
-        CmsUser cmsUser=cmsUserDao.login(userName, password);
+        CmsUser cmsUser=null;
+        if(StringUtils.contains(loginName,"@")){
+            logger.info("是否含有@:"+StringUtils.contains(loginName,"@"));
+            cmsUser=cmsUserDao.findCmsUserByEmailAndPassword(loginName,password);
+        }else{
+            cmsUser=cmsUserDao.findCmsUserByUserNameAndPassword(loginName, password);
+        }
+
          if(cmsUser!=null){
              cmsUser.setUpdateTime(new Date());
              cmsUser.setLastLoginTime(new Date());

@@ -28,15 +28,15 @@ import java.util.Date;
 public class CmsUserAction {
     private Logger logger = Logger.getLogger(this.getClass());
 
-    private String userName = "a";
-    private String password = "b";
+    private String loginName;
+    private String password;
     @Autowired
     private CmsUserService cmsUserService;
 
     public String login() {
         HttpServletRequest request = ServletActionContext.getRequest();
-        logger.info("userName=" + userName + "======password=" + password);
-        CmsUser cmsUser = cmsUserService.login(userName, password);
+        logger.info("loginName=" + loginName + "======password=" + password);
+        CmsUser cmsUser = cmsUserService.login(loginName, password);
         logger.info("ip=" + IpUtils.getIpAddr(ServletActionContext.getRequest()));
         if(cmsUser==null){
             request.setAttribute("loginErrorMessage","用户名或密码有误！");
@@ -46,8 +46,8 @@ public class CmsUserAction {
     }
 
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
     public void setPassword(String password) {

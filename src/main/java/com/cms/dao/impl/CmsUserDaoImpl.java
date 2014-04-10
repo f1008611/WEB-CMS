@@ -20,10 +20,18 @@ public class CmsUserDaoImpl extends BaseDaoImpl<CmsUser> implements CmsUserDao {
     }
 
     @Override
-    public CmsUser login(String userName, String password) {
+    public CmsUser findCmsUserByUserNameAndPassword(String userName, String password) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("userName", userName);
         params.put("password", password);
         return  this.get("from CmsUser t where t.userName = :userName and t.password = :password", params);
+    }
+
+    @Override
+    public CmsUser findCmsUserByEmailAndPassword(String email, String password) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("email", email);
+        params.put("password", password);
+        return  this.get("from CmsUser t where t.email = :email and t.password = :password", params);
     }
 }

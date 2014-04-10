@@ -7,5 +7,6 @@ import com.cms.pojo.CmsUser;
  */
 public interface CmsUserDao extends BaseDao<CmsUser> {
     CmsUser findByUserName(String userName);
-    public CmsUser login(String userName, String password);
+    CmsUser findCmsUserByUserNameAndPassword(String userName, String password);
+    CmsUser findCmsUserByEmailAndPassword(String email, String password);
 }

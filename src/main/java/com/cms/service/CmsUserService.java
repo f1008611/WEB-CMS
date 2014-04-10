@@ -10,7 +10,7 @@ import java.util.List;
 public interface CmsUserService extends BaseService<CmsUser>{
 
 
-    CmsUser login(String userName,String password);
+    CmsUser login(String loginName,String password);
     CmsUser findByUserName(String userName);
    // List<CmsUser> findAllUser();
 
