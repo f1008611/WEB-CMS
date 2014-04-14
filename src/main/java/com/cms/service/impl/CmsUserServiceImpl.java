@@ -1,10 +1,8 @@
 package com.cms.service.impl;
 
-import com.cms.dao.BaseDao;
-import com.cms.dao.CmsOnlineDao;
-import com.cms.dao.CmsRoleDao;
-import com.cms.dao.CmsUserDao;
+import com.cms.dao.*;
 import com.cms.pojo.CmsOnline;
+import com.cms.pojo.CmsPrivilege;
 import com.cms.pojo.CmsRole;
 import com.cms.pojo.CmsUser;
 import com.cms.service.CmsUserService;
@@ -28,6 +26,10 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
     private CmsUserDao cmsUserDao;
     @Autowired
     private CmsOnlineDao cmsOnlineDao;
+    @Autowired
+    private CmsRoleDao cmsRoleDao;
+    @Autowired
+    private CmsPrivilegeDao cmsPrivilegeDao;
 
 
     @Override
@@ -48,7 +50,15 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
 
     private void setPrivileges(HttpSession session,CmsUser cmsUser){
         Set<String> privilegeSet = new HashSet<String>();
+        List<CmsRole> cmsRoles=cmsRoleDao.findCmsRoleByCmsUserId(cmsUser.getId());
+        for(CmsRole cmsRole:cmsRoles){
+            List<CmsPrivilege> cmsPrivileges=cmsPrivilegeDao.findCmsPrivilegeByRoleId(cmsRole.getId());
+            for(CmsPrivilege cmsPrivilege:cmsPrivileges){
+                  privilegeSet.add(cmsPrivilege.getCode());
+            }
+        }
 
+        session.setAttribute("current_user_privileges",privilegeSet);
     }
 
 
