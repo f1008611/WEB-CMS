@@ -21,8 +21,7 @@ import java.util.Date;
 /**
  * Created by Administrator on 14-3-1.
  */
-@Namespace("/admin")
-@Action(value = "cmsUserAction")
+@Namespace("/admin/user")
 @Results({@Result(name = "success", location = "/WEB-INF/admin/index.jsp"),@Result(name = "index", location = "/index.jsp")})
 @Controller
 public class CmsUserAction {
@@ -34,6 +33,8 @@ public class CmsUserAction {
     @Autowired
     private CmsUserService cmsUserService;
 
+
+    @Action("/login")
     public String login() {
         HttpServletRequest request = ServletActionContext.getRequest();
         logger.info("loginName=" + loginName + "======password=" + password);

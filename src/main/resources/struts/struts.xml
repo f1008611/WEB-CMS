@@ -19,9 +19,9 @@
     <!-- 文件上传最大值 -->
     <constant name="struts.multipart.maxSize" value="104857600" />
     <!-- 让struts2支持动态方法调用 -->
-    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
     <!-- Action名称中是否还是用斜线 -->
-    <constant name="struts.enable.SlashesInActionNames" value="false" />
+    <constant name="struts.enable.SlashesInActionNames" value="true" />
     <!-- 允许标签中使用表达式语法 -->
     <constant name="struts.tag.altSyntax" value="true" />
     <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
