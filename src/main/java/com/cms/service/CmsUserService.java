@@ -2,6 +2,7 @@ package com.cms.service;
 
 import com.cms.pojo.CmsUser;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
 public interface CmsUserService extends BaseService<CmsUser>{
 
 
-    CmsUser login(String loginName,String password);
+    CmsUser login(HttpSession session,String loginName,String password);
     CmsUser findByUserName(String userName);
    // List<CmsUser> findAllUser();
 

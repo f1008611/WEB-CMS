@@ -15,10 +15,8 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 /**
  * Created by Administrator on 14-3-1.
@@ -38,8 +36,23 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
     }
 
     @Override
-    public CmsUser login(String loginName, String password) {
+    public CmsUser login(HttpSession session,String loginName, String password) {
         logger.info("come in CmsUserServiceImpl -------> login");
+        CmsUser cmsUser=checkCmsUser(loginName,password);
+        if(cmsUser!=null){
+             session.setAttribute("current_user",cmsUser);
+        }
+        logger.info("come out CmsUserServiceImpl -------> login");
+        return cmsUser;
+    }
+
+    private void setPrivileges(HttpSession session,CmsUser cmsUser){
+        Set<String> privilegeSet = new HashSet<String>();
+
+    }
+
+
+    private CmsUser checkCmsUser(String loginName, String password){
         CmsUser cmsUser=null;
         if(StringUtils.contains(loginName,"@")){
             logger.info("是否含有@:"+StringUtils.contains(loginName,"@"));
@@ -48,21 +61,19 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
             cmsUser=cmsUserDao.findCmsUserByUserNameAndPassword(loginName, password);
         }
 
-         if(cmsUser!=null){
-             cmsUser.setUpdateTime(new Date());
-             cmsUser.setLastLoginTime(new Date());
-             cmsUserDao.update(cmsUser);
-             //mark ip
-
-             CmsOnline cmsOnline=new CmsOnline();
-             cmsOnline.setLoginName(cmsUser.getUserName());
-             cmsOnline.setIp(IpUtils.getIpAddr(ServletActionContext.getRequest()));
-             cmsOnline.setLoginTime(new Date());
-             cmsOnline.setStatus("login");
-             cmsOnlineDao.save(cmsOnline);
-         }
-        logger.info("come out CmsUserServiceImpl -------> login");
-        return cmsUser;
+        if(cmsUser!=null){
+            cmsUser.setUpdateTime(new Date());
+            cmsUser.setLastLoginTime(new Date());
+            cmsUserDao.update(cmsUser);
+            //mark ip
+            CmsOnline cmsOnline=new CmsOnline();
+            cmsOnline.setLoginName(cmsUser.getUserName());
+            cmsOnline.setIp(IpUtils.getIpAddr(ServletActionContext.getRequest()));
+            cmsOnline.setLoginTime(new Date());
+            cmsOnline.setStatus("login");
+            cmsOnlineDao.save(cmsOnline);
+        }
+        return  cmsUser;
     }
 
 /*

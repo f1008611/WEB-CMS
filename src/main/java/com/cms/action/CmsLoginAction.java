@@ -25,7 +25,7 @@ public class CmsLoginAction extends ActionSupport {
     @Autowired
     private CmsUserService cmsUserService;
 
-    @Action("/login")
+    @Action("login")
     public String login() {
         HttpServletRequest request = ServletActionContext.getRequest();
         LOG.info("loginName=" + loginName + "======password=" + password);
