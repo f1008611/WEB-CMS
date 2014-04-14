@@ -28,30 +28,4 @@ public class CmsUserAction {
     private Logger logger = Logger.getLogger(this.getClass());
 
 
-    private String loginName;
-    private String password;
-    @Autowired
-    private CmsUserService cmsUserService;
-
-
-    @Action("/login")
-    public String login() {
-        HttpServletRequest request = ServletActionContext.getRequest();
-        logger.info("loginName=" + loginName + "======password=" + password);
-        CmsUser cmsUser = cmsUserService.login(loginName, password);
-        logger.info("ip=" + IpUtils.getIpAddr(ServletActionContext.getRequest()));
-        if(cmsUser==null){
-            request.setAttribute("loginErrorMessage","用户名或密码有误！");
-            return "index";
-        }
-        return "success";
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
 }

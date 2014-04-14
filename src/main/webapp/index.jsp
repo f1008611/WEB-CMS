@@ -6,7 +6,7 @@
     <title>test</title>
   </head>
   <body>
-   <form action="${pageContext.request.contextPath}/admin/user/login.action" method="post">
+   <form action="${pageContext.request.contextPath}/admin/login.do" method="post">
        userName:<input type="text" id="loginName" name="loginName"><br>
        password:<input type="password" id="password" name="password"> <br>
        <c:if test="${not empty loginErrorMessage}">
