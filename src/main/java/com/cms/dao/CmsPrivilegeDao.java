@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface CmsPrivilegeDao extends BaseDao<CmsPrivilege>{
     List<CmsPrivilege> findCmsPrivilegeByRoleId(Long roleId);
+    List<CmsPrivilege> findCmsPrivilegeByParentId(Long parentId,String status);
 }

@@ -13,6 +13,8 @@ public class CmsPrivilege implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
+    @Column(name="parent_id")
+    private Long parentId;
     private String code;
     private String description;
     private String link;
@@ -27,6 +29,14 @@ public class CmsPrivilege implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getCode() {

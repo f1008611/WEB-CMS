@@ -8,11 +8,15 @@ import java.util.List;
 /**
  * Created by Administrator on 14-3-1.
  */
-public interface CmsUserService extends BaseService<CmsUser>{
+public interface CmsUserService {
 
 
     CmsUser login(HttpSession session,String loginName,String password);
     CmsUser findByUserName(String userName);
+    boolean isLogin(HttpSession session);
+    CmsUser getCurrentCmsUser(HttpSession session);
+
+
    // List<CmsUser> findAllUser();
 
     void updateEntity();

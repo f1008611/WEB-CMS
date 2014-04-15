@@ -10,6 +10,7 @@ import com.cms.utils.IpUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ import java.util.*;
  * Created by Administrator on 14-3-1.
  */
 @Service("cmsUserService")
-public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsUserService {
+public class CmsUserServiceImpl implements CmsUserService {
     private Logger logger = Logger.getLogger(this.getClass());
     @Autowired
     private CmsUserDao cmsUserDao;
@@ -31,6 +32,25 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
     @Autowired
     private CmsPrivilegeDao cmsPrivilegeDao;
 
+    @Override
+    public CmsUser getCurrentCmsUser(HttpSession session) {
+        CmsUser cmsUser=null;
+        Object obj= session.getAttribute("current_user");
+        if(obj!=null&&obj instanceof  CmsUser){
+            cmsUser=(CmsUser)obj;
+        }
+        return cmsUser;
+    }
+
+    @Override
+    public boolean isLogin(HttpSession session) {
+       Object obj= session.getAttribute("current_user");
+        if(obj!=null&& obj instanceof  CmsUser){
+           logger.info("已经登录。。。。");
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public CmsUser findByUserName(String userName) {
@@ -42,7 +62,9 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
         logger.info("come in CmsUserServiceImpl -------> login");
         CmsUser cmsUser=checkCmsUser(loginName,password);
         if(cmsUser!=null){
+
              session.setAttribute("current_user",cmsUser);
+            setPrivileges(session, cmsUser);
         }
         logger.info("come out CmsUserServiceImpl -------> login");
         return cmsUser;
@@ -50,10 +72,19 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
 
     private void setPrivileges(HttpSession session,CmsUser cmsUser){
         Set<String> privilegeSet = new HashSet<String>();
-        List<CmsRole> cmsRoles=cmsRoleDao.findCmsRoleByCmsUserId(cmsUser.getId());
-        for(CmsRole cmsRole:cmsRoles){
+        List<CmsRole> cmsRoleList=cmsRoleDao.findCmsRoleByCmsUserId(cmsUser.getId());
+
+            logger.info(">>>>>>>>>>>>>>>>>>>>> "+(cmsRoleList instanceof  CmsRole));
+        for(int i=0;i<cmsRoleList.size();i++){
+            System.out.println("object="+cmsRoleList.get(i) instanceof  Object);
+            CmsRole cmsRole=  (CmsRole)cmsRoleList.get(i);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>  "+cmsRole.getCode());
+        }
+
+        for(CmsRole cmsRole:cmsRoleList){
             List<CmsPrivilege> cmsPrivileges=cmsPrivilegeDao.findCmsPrivilegeByRoleId(cmsRole.getId());
             for(CmsPrivilege cmsPrivilege:cmsPrivileges){
+                logger.info("current_user_privileges -------> code="+cmsPrivilege.getCode());
                   privilegeSet.add(cmsPrivilege.getCode());
             }
         }

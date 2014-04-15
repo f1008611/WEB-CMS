@@ -25,7 +25,7 @@ public class CmsRoleDaoImpl extends BaseDaoImpl<CmsRole> implements CmsRoleDao {
     public List<CmsRole> findCmsRoleByCmsUserId(Long userId) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("userId",userId);
-        String hql ="from CmsRole t ,CmsUserRoleRel r where t.id=r.roleId and r.userId=:userId";
+        String hql ="select t from CmsRole t , CmsUserRoleRel r where t.id=r.roleId and r.userId=:userId";
         return find(hql,params);
     }
 }

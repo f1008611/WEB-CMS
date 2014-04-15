@@ -7,10 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
+import org.apache.struts2.convention.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -21,11 +18,17 @@ import java.util.Date;
 /**
  * Created by Administrator on 14-3-1.
  */
+@ParentPackage("myStrutsDefault")
 @Namespace("/admin/user")
-@Results({@Result(name = "success", location = "/WEB-INF/admin/index.jsp"),@Result(name = "index", location = "/index.jsp")})
+@Results({@Result(name = "query", location = "/WEB-INF/user/userList.jsp"),@Result(name = "index", location = "/index.jsp")})
 @Controller
 public class CmsUserAction {
-    private Logger logger = Logger.getLogger(this.getClass());
+    private Logger LOG = Logger.getLogger(this.getClass());
 
+    @Action("query")
+    public String query(){
+        LOG.info("come in CmsUserAction...... ");
+        return "query";
+    }
 
 }
