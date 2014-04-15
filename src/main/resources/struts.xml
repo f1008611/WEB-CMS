@@ -28,12 +28,12 @@
     <constant name="struts.dispatcher.parametersWorkaround" value="false" />
     <package name="ssddd" extends="struts-default">
         <interceptors>
-            <interceptor name="authentication" class="com.cms.interceptor.PrivilegeInterceptor"></interceptor>
-            <interceptor-stack name="myInterceptorStack">
-                <interceptor-ref name="authentication"></interceptor-ref>
-                <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor name="privilegeInterceptor" class="com.cms.interceptor.PrivilegeInterceptor"/>
+            <interceptor-stack name="myPrivilegeInterceptor">
+                <interceptor-ref name="privilegeInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>
-        <default-interceptor-ref name="myInterceptorStack"/>
+        <default-interceptor-ref name="myPrivilegeInterceptor"/>
     </package>
 </struts>

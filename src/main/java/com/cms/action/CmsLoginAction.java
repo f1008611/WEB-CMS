@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by Administrator on 14-4-14.
  */
+@ParentPackage("ssddd")
 @Namespace("/admin")
 @Results({@Result(name = "success", location = "/WEB-INF/admin/index.jsp"),@Result(name = "index", location = "/index.jsp")})
 @Controller
