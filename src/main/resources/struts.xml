@@ -26,7 +26,7 @@
     <constant name="struts.tag.altSyntax" value="true" />
     <!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
     <constant name="struts.dispatcher.parametersWorkaround" value="false" />
-    <package name="ssddd" extends="struts-default">
+    <package name="myStrutsDefault" extends="struts-default">
         <interceptors>
             <interceptor name="privilegeInterceptor" class="com.cms.interceptor.PrivilegeInterceptor"/>
             <interceptor-stack name="myPrivilegeInterceptor">

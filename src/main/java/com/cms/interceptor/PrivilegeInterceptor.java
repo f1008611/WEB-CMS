@@ -6,13 +6,13 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Administrator on 14-4-15.
  */
-
 
 public class PrivilegeInterceptor  extends AbstractInterceptor {
     private Logger LOG  =Logger.getLogger(this.getClass());
