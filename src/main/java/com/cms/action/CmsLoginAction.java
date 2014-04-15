@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Administrator on 14-4-14.
@@ -29,7 +30,7 @@ public class CmsLoginAction extends ActionSupport {
     public String login() {
         HttpServletRequest request = ServletActionContext.getRequest();
         LOG.info("loginName=" + loginName + "======password=" + password);
-        CmsUser cmsUser = cmsUserService.login(loginName, password);
+        CmsUser cmsUser = cmsUserService.login(request.getSession(),loginName, password);
         LOG.info("ip=" + IpUtils.getIpAddr(ServletActionContext.getRequest()));
         if(cmsUser==null){
             request.setAttribute("loginErrorMessage","用户名或密码有误！");

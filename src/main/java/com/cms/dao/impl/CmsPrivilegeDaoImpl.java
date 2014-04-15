@@ -2,6 +2,7 @@ package com.cms.dao.impl;
 
 import com.cms.dao.CmsPrivilegeDao;
 import com.cms.pojo.CmsPrivilege;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 14-4-14.
  */
+@Repository("cmsPrivilegeDao")
 public class CmsPrivilegeDaoImpl extends BaseDaoImpl<CmsPrivilege> implements CmsPrivilegeDao {
     @Override
     public List<CmsPrivilege> findCmsPrivilegeByRoleId(Long roleId) {
