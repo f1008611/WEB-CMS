@@ -8,7 +8,8 @@ import org.apache.struts2.convention.annotation.InterceptorRef;
 /**
  * Created by Administrator on 14-4-15.
  */
-@InterceptorRef("defaultStack")
+
+
 public class PrivilegeInterceptor  implements Interceptor {
     private Logger LOG  =Logger.getLogger(this.getClass());
 
