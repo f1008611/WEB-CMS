@@ -34,7 +34,7 @@ public class PrivilegeInterceptor  extends AbstractInterceptor {
         }
 
         LOG.info("PrivilegeInterceptor intercept come out...........");
-        return null;
+        return "index";
     }
 
 
