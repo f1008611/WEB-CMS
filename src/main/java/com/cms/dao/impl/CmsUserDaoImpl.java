@@ -5,6 +5,7 @@ import com.cms.pojo.CmsUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,5 +34,11 @@ public class CmsUserDaoImpl extends BaseDaoImpl<CmsUser> implements CmsUserDao {
         params.put("email", email);
         params.put("password", password);
         return  this.get("from CmsUser t where t.email = :email and t.password = :password", params);
+    }
+
+    @Override
+    public List<CmsUser> findAllCmsUser() {
+        String hql="from CmsUser order by id desc";
+        return this.find(hql);
     }
 }

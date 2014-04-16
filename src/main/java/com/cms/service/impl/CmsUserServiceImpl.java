@@ -21,7 +21,7 @@ import java.util.*;
  * Created by Administrator on 14-3-1.
  */
 @Service("cmsUserService")
-public class CmsUserServiceImpl implements CmsUserService {
+public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsUserService {
     private Logger logger = Logger.getLogger(this.getClass());
     @Autowired
     private CmsUserDao cmsUserDao;
@@ -117,11 +117,11 @@ public class CmsUserServiceImpl implements CmsUserService {
         return  cmsUser;
     }
 
-/*
+
     @Override
-    public List<CmsUser> findAllUser() {
-        return cmsUserBaseDao.find("from CmsUser ");
-    }*/
+    public List<CmsUser> findAllCmsUser() {
+        return cmsUserDao.findAllCmsUser();
+    }
 
     @Override
     public void updateEntity() {

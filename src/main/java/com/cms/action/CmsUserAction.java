@@ -24,11 +24,17 @@ import java.util.Date;
 @Controller
 public class CmsUserAction {
     private Logger LOG = Logger.getLogger(this.getClass());
+    private CmsUserService cmsUserService;
 
     @Action("query")
     public String query(){
         LOG.info("come in CmsUserAction...... ");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("cmsUserList",cmsUserService.findAllCmsUser());
         return "query";
     }
 
+    public void setCmsUserService(CmsUserService cmsUserService) {
+        this.cmsUserService = cmsUserService;
+    }
 }
