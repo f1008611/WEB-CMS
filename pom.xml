@@ -11,16 +11,6 @@
 
     <!-- 指定Maven仓库 -->
     <repositories>
-      <!--  <repository>
-            <id>maven</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>-->
-
         <repository>
             <id>oschinaRepository</id>
             <name>local private nexus</name>
@@ -69,12 +59,7 @@
             <version>2.2.1-b03</version>
             <scope>provided</scope>
         </dependency>
-        <!-- fastJson -->
-       <!-- <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.1.24</version>
-        </dependency>-->
+
         <!-- mysql数据库驱动 -->
         <dependency>
             <groupId>mysql</groupId>
@@ -82,14 +67,6 @@
             <version>5.1.21</version>
         </dependency>
 
-        <!-- sql server数据库驱动 -->
-        <!-- <dependency> <groupId>net.sourceforge.jtds</groupId> <artifactId>jtds</artifactId> <version>1.2.4</version> </dependency> -->
-        <!-- oracle数据库驱动 -->
-        <!--<dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>10.2.0.1.0</version>
-        </dependency>-->
 
         <!--c3po-->
         <dependency>
