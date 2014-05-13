@@ -3,13 +3,9 @@ package com.cms.interceptor;
 import com.cms.pojo.CmsUser;
 import com.cms.service.CmsPrivilegeService;
 import com.cms.service.CmsUserService;
-import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import com.opensymphony.xwork2.interceptor.Interceptor;
+
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.convention.annotation.InterceptorRef;
-import org.apache.struts2.convention.annotation.InterceptorRefs;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +14,12 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Administrator on 14-4-15.
  */
 
-public class PrivilegeInterceptor  extends AbstractInterceptor {
+public class PrivilegeInterceptor   {
     private Logger LOG  =Logger.getLogger(this.getClass());
     private CmsUserService cmsUserService;
     private CmsPrivilegeService cmsPrivilegeService;
 
-    @Override
+    /*@Override
     public void init() {
         LOG.info("PrivilegeInterceptor init...........");
     }
@@ -75,7 +71,7 @@ public class PrivilegeInterceptor  extends AbstractInterceptor {
     public void destroy() {
         LOG.info("PrivilegeInterceptor destroy...........");
     }
-
+*/
     public void setCmsUserService(CmsUserService cmsUserService) {
         this.cmsUserService = cmsUserService;
     }

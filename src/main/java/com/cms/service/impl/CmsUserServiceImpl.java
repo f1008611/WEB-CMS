@@ -9,7 +9,6 @@ import com.cms.service.CmsUserService;
 import com.cms.utils.IpUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
 import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -109,7 +108,7 @@ public class CmsUserServiceImpl extends BaseServiceImpl<CmsUser> implements CmsU
             //mark ip
             CmsOnline cmsOnline=new CmsOnline();
             cmsOnline.setLoginName(cmsUser.getUserName());
-            cmsOnline.setIp(IpUtils.getIpAddr(ServletActionContext.getRequest()));
+           // cmsOnline.setIp(IpUtils.getIpAddr(ServletActionContext.getRequest()));
             cmsOnline.setLoginTime(new Date());
             cmsOnline.setStatus("login");
             cmsOnlineDao.save(cmsOnline);
