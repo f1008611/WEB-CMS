@@ -1,6 +1,6 @@
 package com.cms.service.impl;
 
-import com.cms.Constants.Constants;
+import com.cms.constants.Constants;
 import com.cms.dao.CmsSettingDao;
 import com.cms.pojo.CmsSetting;
 import com.cms.service.CmsSettingService;

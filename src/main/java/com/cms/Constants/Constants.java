@@ -1,4 +1,4 @@
-package com.cms.Constants;
+package com.cms.constants;
 
 /**
  * Created by Administrator on 14-4-9.
