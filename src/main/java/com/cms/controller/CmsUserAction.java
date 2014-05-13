@@ -1,18 +1,12 @@
-package com.cms.action;
+package com.cms.controller;
 
-import com.cms.pojo.CmsUser;
 import com.cms.service.CmsUserService;
-import com.cms.utils.IpUtils;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 
 
 /**

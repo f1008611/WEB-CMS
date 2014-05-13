@@ -1,4 +1,4 @@
-package com.cms.action;
+package com.cms.controller;
 
 import com.cms.pojo.CmsUser;
 import com.cms.service.CmsUserService;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by Administrator on 14-4-14.
